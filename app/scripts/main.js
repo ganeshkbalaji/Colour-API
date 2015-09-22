@@ -1,27 +1,27 @@
 $( document ).ready(function() {
   var globalArr;
   var globalIndex = 0;
+  var customBoard = new DrawingBoard.Board('sampleBoard', {
+  background: "#69D2E7",
+  color: "#ff0",
+  size: 30,
+  controls: [
+    { Size: { type: "range" } },
+    { Navigation: { back: false, forward: false } },
+    'DrawingMode'
+  ],
+  webStorage: 'local'
+});
+  $("tr td").on("click", function() {
+    var index = $(this).text();
+    customBoard.resetBackground('#' + index);
+  })
   var colorOptions;
   function getCssColor(color) {
     return "#"+color;
   }
   function initialLoad(){
-    $('#image').attr('src', globalArr[0].imageUrl);
-    $('#hyperlink').attr('href', globalArr[0].url);
-    $('#palette-title').text(globalArr[0].title);
-    $('#creator').text(globalArr[0].userName);
-    $('#date').text(globalArr[0].dateCreated);
-    $('#views').text(globalArr[0].numViews);
-    $('tr td:nth-child(1)').text(globalArr[0].colors[0])
-    $('tr td:nth-child(1)').css('background-color', getCssColor(globalArr[0].colors[0]));
-    $('tr td:nth-child(2)').text(globalArr[0].colors[1]);
-    $('tr td:nth-child(2)').css('background-color', getCssColor(globalArr[0].colors[1]));
-    $('tr td:nth-child(3)').text(globalArr[0].colors[2]);
-    $('tr td:nth-child(3)').css('background-color', getCssColor(globalArr[0].colors[2]));
-    $('tr td:nth-child(4)').text(globalArr[0].colors[3]);
-    $('tr td:nth-child(4)').css('background-color', getCssColor(globalArr[0].colors[3]));
-    $('tr td:nth-child(5)').text(globalArr[0].colors[4]);
-    $('tr td:nth-child(5)').css('background-color', getCssColor(globalArr[0].colors[4]));
+      pickAnObject(0);
   };
   function pickAnObject(index){
     $('#image').attr('src', globalArr[index].imageUrl);
@@ -30,16 +30,11 @@ $( document ).ready(function() {
     $('#creator').text(globalArr[index].userName);
     $('#date').text(globalArr[index].dateCreated);
     $('#views').text(globalArr[index].numViews);
-    $('tr td:nth-child(1)').text(globalArr[index].colors[0]);
-    $('tr td:nth-child(1)').css('background-color', getCssColor(globalArr[index].colors[0]))
-    $('tr td:nth-child(2)').text(globalArr[index].colors[1]);
-    $('tr td:nth-child(2)').css('background-color', getCssColor(globalArr[index].colors[1]))
-    $('tr td:nth-child(3)').text(globalArr[index].colors[2]);
-    $('tr td:nth-child(3)').css('background-color', getCssColor(globalArr[index].colors[2]))
-    $('tr td:nth-child(4)').text(globalArr[index].colors[3]);
-    $('tr td:nth-child(4)').css('background-color', getCssColor(globalArr[index].colors[3]))
-    $('tr td:nth-child(5)').text(globalArr[index].colors[4]);
-    $('tr td:nth-child(5)').css('background-color', getCssColor(globalArr[index].colors[4]))
+    for (var i = 0; i <= 4; ++i) {
+    $('tr td:nth-child(' + i + ')')
+        .text(globalArr[index].colors[i]);
+        .css('background-color', getCssColor(globalArr[index].colors[i]));
+    }
   };
   $("#next").on("click", function(event) {
     event.preventDefault();

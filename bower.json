@@ -3,9 +3,9 @@
   "private": true,
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
+    "drawingboard.js": "~0.4.6",
     "modernizr": "~2.8.3",
     "moment": "~2.10.6",
-    "sketch.js-2": "*",
     "sweetalert": "~1.1.0"
   },
   "overrides": {

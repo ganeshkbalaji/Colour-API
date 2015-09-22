@@ -12,6 +12,7 @@
 
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/drawingboard.js/dist/drawingboard.css" />
   <link rel="stylesheet" href="/bower_components/sweetalert/dist/sweetalert.css" />
   <!-- endbower -->
   <!-- endbuild -->
@@ -75,13 +76,9 @@
               <td id="fifth"></td>
             </tr>
           </table>
-          <!-- <canvas id="simple_sketch" width="800" height="300"></canvas> -->
-          <script type="text/javascript">
-          // $(function() {
-          //   $('canvas#simple_sketch').sketch();
-          // });
-          // </script>
         </div>
+
+        <div id="sampleBoard"></div>
 
         <div class="footer">
           <p> Made by Ganesh Balaji utilizing the Colour API</p>
@@ -93,8 +90,9 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/simple-undo/lib/simple-undo.js"></script>
+    <script src="/bower_components/drawingboard.js/dist/drawingboard.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
-    <script src="/bower_components/sketch.js-2/lib/sketch.js"></script>
     <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
