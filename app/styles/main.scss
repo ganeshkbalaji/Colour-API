@@ -36,12 +36,28 @@ body {
   }
 }
 
-.row {
-  margin-left: 0.2em;
+ .row {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    img {
+      width: 500px;
+      height: 300px;
+    }
+    li {
+      margin-right: 50px;
+    }
+ }
+
+ .left {
+  float: left;
+ }
+
+.right{
+  float: right;
 }
 
 .footer {
-  margin: 20px 0 0 0;
+  margin: 40px 0 0 0;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
