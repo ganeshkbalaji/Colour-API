@@ -11,18 +11,21 @@ $( document ).ready(function() {
     'DrawingMode'
   ],
   webStorage: 'local'
-});
+  });
+
   $("tr td").on("click", function() {
     var index = $(this).text();
     customBoard.resetBackground('#' + index);
   })
-  var colorOptions;
+
   function getCssColor(color) {
-    return "#"+color;
+    return "#" + color
   }
+
   function initialLoad(){
       pickAnObject(0);
   };
+
   function pickAnObject(index){
     $('#image').attr('src', globalArr[index].imageUrl);
     $('#hyperlink').attr('href', globalArr[index].url);
@@ -31,42 +34,40 @@ $( document ).ready(function() {
     $('#date').text(globalArr[index].dateCreated);
     $('#views').text(globalArr[index].numViews);
     for (var i = 0; i <= 4; ++i) {
-    $('tr td:nth-child(' + i + ')')
-        .text(globalArr[index].colors[i]);
+    $('tr td:nth-child(' + (i+1) + ')')
+        .text(globalArr[index].colors[i])
         .css('background-color', getCssColor(globalArr[index].colors[i]));
     }
   };
-  $("#next").on("click", function(event) {
+
+  $("#next, #previous").on("click", function(event) {
     event.preventDefault();
-    globalIndex++;
+
+    var inc = this.id === 'next' ? 1 : -1;
+
+    globalIndex += inc;
     if (globalArr.length === globalIndex) {
       swal("There are no more values");
       globalIndex--;
+    } else if (globalIndex === -1) {
+        swal("You're at the beginning");
+        globalIndex++;
     }
     pickAnObject(globalIndex);
   });
-  $("#previous").on("click", function(event) {
-    event.preventDefault();
-    globalIndex--;
-    if (globalIndex === -1) {
-      swal("You're at the beginning");
-      globalIndex++;
-    }
-    pickAnObject(globalIndex);
-  });
+
   $("#random").on("click", function(event) {
     event.preventDefault();
     globalIndex = Math.floor((Math.random() * globalArr.length) + 1) - 1;
     pickAnObject(globalIndex);
   });
+
   $.ajax({
-        url: 'http://www.colourlovers.com/api/palettes?format=json&jsonCallback=callback&',
-        dataType: "jsonp",
-        async: false,
-        jsonpCallback: 'callback',
-        success: function(response){
-          globalArr = response;
-          initialLoad(globalArr);
-        }
+      url: 'http://www.colourlovers.com/api/palettes?format=json&jsonCallback=callback&',
+      dataType: "jsonp",
+      jsonpCallback: 'callback'
+  }).then(function(response) {
+      globalArr = response;
+      initialLoad(globalArr);
   });
 });
