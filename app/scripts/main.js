@@ -3,7 +3,7 @@ $( document ).ready(function() {
   var globalIndex = 0;
   var customBoard = new DrawingBoard.Board('sampleBoard', {
   background: "#69D2E7",
-  color: "#ff0",
+  color: "#FFFFFF",
   size: 30,
   controls: [
     { Size: { type: "range" } },
