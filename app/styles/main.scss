@@ -37,14 +37,23 @@ body {
 }
 
  .row {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
     img {
       width: 500px;
       height: 300px;
     }
-    li {
-      margin-right: 50px;
+    tr {
+      border: 1px solid black;
+      td {
+        border: 1px solid black;
+        padding-left: 20px;
+      }
+    }
+    table {
+      margin-top: 100px;
+      width: 100%;
+      height: 300px;
     }
  }
 
@@ -54,6 +63,16 @@ body {
 
 .right{
   float: right;
+  margin-top: 50px;
+  ul {
+    list-style:none;
+    p {
+      font-weight: bold;
+    }
+  }
+  li {
+    margin-bottom: 20px;
+  }
 }
 
 .footer {
